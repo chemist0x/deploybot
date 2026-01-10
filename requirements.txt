@@ -1,0 +1,44 @@
+# Core dependencies
+tweepy==4.14.0
+requests==2.31.0
+python-dotenv==1.0.0
+pyyaml==6.0.1
+
+# Data processing
+pandas==2.1.0
+numpy==1.24.3
+
+# NLP and ML
+scikit-learn==1.3.0
+nltk==3.8.1
+textblob==0.17.1
+vaderSentiment==3.3.2
+
+# Database
+sqlalchemy==2.0.19
+
+# Scheduling
+schedule==1.2.0
+apscheduler==3.10.1
+
+# Logging
+loguru==0.7.0
+
+# Optional: Advanced AI
+openai==0.27.8
+
+# Utilities
+beautifulsoup4==4.12.2
+feedparser==6.0.10
+tqdm==4.65.0
+
+# Email (optional)
+secure-smtplib==0.1.1
+
+# Testing
+pytest==7.4.0
+pytest-cov==4.1.0
+pytest-mock==3.11.1
+
+# HTTP server for health checks
+flask==3.0.0

@@ -1,0 +1,90 @@
+# Narrative Detection Bot Configuration
+
+monitoring:
+  interval_minutes: 15
+  sources:
+    - twitter
+    - news_api
+    - rss_feeds
+  
+twitter:
+  track_keywords:
+    - "breaking news"
+    - "developing story"
+    - "urgent"
+    - "just in"
+  track_hashtags:
+    - "#breaking"
+    - "#news"
+    - "#trending"
+  languages:
+    - "en"
+  max_tweets_per_cycle: 500
+  
+news:
+  sources:
+    - bbc-news
+    - cnn
+    - reuters
+    - the-verge
+    - techcrunch
+    - associated-press
+    - bloomberg
+  categories:
+    - general
+    - technology
+    - business
+    - health
+    - science
+  countries:
+    - us
+    - gb
+  max_articles_per_cycle: 200
+
+rss_feeds:
+  - url: "https://feeds.bbci.co.uk/news/rss.xml"
+    name: "BBC News"
+  - url: "https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml"
+    name: "NY Times"
+  - url: "http://feeds.reuters.com/reuters/topNews"
+    name: "Reuters"
+  - url: "https://www.theguardian.com/world/rss"
+    name: "The Guardian"
+
+narrative_detection:
+  min_mentions: 10
+  min_sources: 3
+  sentiment_threshold: 0.3
+  time_window_hours: 24
+  clustering:
+    algorithm: "dbscan"
+    min_cluster_size: 5
+    eps: 0.3
+  
+alerts:
+  enabled: true
+  methods:
+    - console
+    - file
+    - email
+  threshold: "high"  # low, medium, high, critical
+  email:
+    enabled: false
+    subject_prefix: "[Narrative Alert]"
+  
+output:
+  save_raw_data: true
+  generate_reports: true
+  report_format: 
+    - json
+    - html
+  retention_days: 30
+
+database:
+  enabled: true
+  path: "output/database/narratives.db"
+
+health_check:
+  enabled: true
+  port: 8080
+  endpoint: "/health"
